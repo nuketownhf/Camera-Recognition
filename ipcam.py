@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-host = input("Wie ist die IP-Cam Adresse? \n" )
+host = '192.168.137.72:8080'
 benutzer = input("Account \n" )
 passwort = input("passwort \n" )
 
@@ -20,7 +20,7 @@ while True:
 
 
 	for (x,y,w,h) in gesicht:
-		img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),3)
+		img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,255),2)
 
 	cv2.imshow('Gesichtserkennung', img)
 
