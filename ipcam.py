@@ -1,9 +1,10 @@
 import cv2
 import numpy as np
 
-host = '192.168.0.59:8080'
-benutzer = 'admin'
-passwort = '1234'
+
+host = input("Wie ist die IP-Cam Adresse? \n" )
+benutzer = input("Account \n" )
+passwort = input("passwort \n" )
 
 hoststr = 'http:{0}:{1}@{2}/video'.format(benutzer, passwort, host)
 print('Streame ' + hoststr)
