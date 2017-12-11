@@ -1,7 +1,12 @@
 import cv2
 import numpy as np
 
+gesichter,Ids = getBilderUndText('dataset')
+recognizer.train(gesichter, np.array(Ids))
+recognizer.write('trainer/trainer.yml')
 
+recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer.read('trainer/trainer.yml')
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath);
 host = '192.168.0.59:8080'
