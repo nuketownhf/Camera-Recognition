@@ -1,6 +1,11 @@
 import cv2
 import numpy as np
 
+def getBilderUndText(path):
+    BilderPfad=[os.path.join(path,f) for f in os.listdir(path)] 
+    leereProben=[]
+    Ids=[]
+
 gesichter,Ids = getBilderUndText('dataset')
 recognizer.train(gesichter, np.array(Ids))
 recognizer.write('trainer/trainer.yml')
