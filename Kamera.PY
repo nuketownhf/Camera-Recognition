@@ -4,6 +4,7 @@ import numpy as np
 gesichter,Ids = getBilderUndText('dataset')
 recognizer.train(gesichter, np.array(Ids))
 recognizer.write('trainer/trainer.yml')
+detector= cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trainer/trainer.yml')
