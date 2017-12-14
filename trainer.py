@@ -1,7 +1,7 @@
 import cv2
 
 detector=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-host = '192.168.0.59:8080'
+host = '10.1.42.109:8080'
 benutzer = 'admin'
 passwort = '1234'
 
@@ -15,7 +15,7 @@ cam = cv2.VideoCapture(hoststr)
 while(True):
     ret, img = cam.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    gesichter = detector.detectMultiScale(gray, 1.05, 20)
+    gesichter = detector.detectMultiScale(gray, 1.05, 5)
     for (x,y,w,h) in gesichter:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         cv2.imshow('frame',img)
@@ -23,7 +23,7 @@ while(True):
         cv2.imwrite("dataset/Benutzer."+Id +'.'+ str(Bildnummer) + ".jpg", gray[y:y+h,x:x+w])
 
         
-    if cv2.waitKey(1) == 27: 
+    if cv2.waitKey(10) == 27: 
         break
     elif Bildnummer>50:
         break
