@@ -21,7 +21,7 @@ def getBilderUndText(path):
             Ids.append(Id)
     return Bildnummer,Ids
 
-host = '10.1.42.109:8080'
+host = '192.168.0.59:8080'
 benutzer = 'admin'
 passwort = '1234'
 cv2.setUseOptimized(True);
@@ -43,32 +43,18 @@ schrift = cv2.FONT_HERSHEY_SIMPLEX
 while True:
     ret, im =kamera.read()
     gray=cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-<<<<<<< HEAD
     gesichter=faceCascade.detectMultiScale(gray, 1.1,10)
-    
-    for(x,y,w,h) in gesichter:
-        
-        cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,255),3)
-=======
-    gesichter=faceCascade.detectMultiScale(gray, 1.1,5)
     for(x,y,w,h) in gesichter:
         cv2.rectangle(im,(x,y),(x+w,y+h),(225,0,0),2)
->>>>>>> fa9e7f81c6057fbdc09f68e5870988ebff37e390
         cv2.putText(im, str(len(gesichter)), (20, 50), schrift, 1, (0,255,255), 2)
         Id, conf = recognizer.predict(gray[y:y+h,x:x+w])
         
-        if(conf<500):
+        if(conf<100):
             if(Id==1):
-                Id="ok"
+                Id="Can Karaduman"
                 
             elif(Id==2):
-<<<<<<< HEAD
-                Id="ok2"
-=======
-                Id="Ensar Musaj"
-            elif(Id==3):
-                Id="Florenz Cremer"
->>>>>>> fa9e7f81c6057fbdc09f68e5870988ebff37e390
+                Id="Zeynep Karaduman"
         else:
             Id="Unbekannt"
         
